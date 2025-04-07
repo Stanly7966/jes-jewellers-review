@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jes Jewellers Review Page</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 20px; }
+    h1, h2 { color: #333; }
+    .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    select, button { padding: 10px; margin: 10px 0; width: 100%; }
+    .review-box { margin-top: 10px; padding: 10px; background: #eee; border-radius: 5px; display: none; }
+    .qr-section { text-align: center; margin-top: 30px; }
+    .qr-section img { width: 150px; }
+    .button-group { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Jes Jewellers - WhatsApp Review Page</h1>
+    <label for="product-select">Product Type Purchased</label>
+    <select id="product-select">
+      <option value="">-- Select a Product --</option>
+      <option value="mens-ring">Men’s Ring</option>
+      <option value="bracelet">Bracelet</option>
+      <option value="long-mala">Long Mala</option>
+      <option value="patta-set">Patta Set</option>
+      <option value="chain">Chain</option>
+      <option value="nose-pin">Nose Pin</option>
+      <option value="earrings">Earrings</option>
+      <option value="bangles">Bangles</option>
+      <option value="wedding-set">Wedding Set</option>
+      <option value="engagement-ring">Engagement Ring</option>
+      <option value="birthday-gift">Birthday Gift</option>
+    </select>
+
+    <div id="review-box" class="review-box"></div>
+
+    <div class="button-group">
+      <button onclick="copyReview()">Copy Selected Review</button>
+      <button onclick="window.open('https://g.page/r/Cd1xxxxxGoogleReviewLink', '_blank')">Leave a Google Review</button>
+    </div>
+
+    <div class="qr-section">
+      <h2>Scan to Review</h2>
+      <img src="logo-qr.png" alt="Jes Jewellers QR Code with Logo" />
+    </div>
+  </div>
+
+  <script>
+    const reviewBox = document.getElementById('review-box');
+    const productSelect = document.getElementById('product-select');
+
+    const reviews = {
+      "mens-ring": [
+        "Loved the elegant design and quality!",
+        "Perfect fit and premium finish.",
+        "Great price and fast delivery."
+      ],
+      "bracelet": [
+        "Stylish and well-crafted!",
+        "Customer service was excellent.",
+        "Beautiful finish with great packaging."
+      ],
+      "long-mala": [
+        "Traditional look with modern craftsmanship.",
+        "My family loved the detailing!",
+        "Great value for money."
+      ],
+      "patta-set": [
+        "Perfect for gifting!",
+        "Unique and elegant look.",
+        "Friendly and helpful staff."
+      ],
+      "chain": [
+        "Durable and trendy.",
+        "Staff guided me patiently.",
+        "Impressed with the quality."
+      ],
+      "nose-pin": [
+        "Small piece but stunning design!",
+        "Quick service and delivery.",
+        "Loved the craftsmanship."
+      ],
+      "earrings": [
+        "Absolutely loved the shine.",
+        "Staff helped me choose the perfect pair.",
+        "They look premium and are lightweight."
+      ],
+      "bangles": [
+        "Perfect match with my saree.",
+        "Affordable and beautiful.",
+        "Excellent service experience."
+      ],
+      "wedding-set": [
+        "Dream wedding set!",
+        "High-quality stones and gold.",
+        "Friendly staff made it special."
+      ],
+      "engagement-ring": [
+        "She said yes! Thanks Jes Jewellers!",
+        "Stunning ring and professional service.",
+        "Custom design turned out perfect."
+      ],
+      "birthday-gift": [
+        "Perfect surprise for her birthday.",
+        "Elegant packaging and quick delivery.",
+        "Very satisfied with the selection."
+      ]
+    };
+
+    productSelect.addEventListener('change', () => {
+      const selected = productSelect.value;
+      reviewBox.innerHTML = '';
+      reviewBox.style.display = 'none';
+
+      if (selected && reviews[selected]) {
+        reviewBox.style.display = 'block';
+        reviews[selected].forEach((r, i) => {
+          reviewBox.innerHTML += `<p><input type="radio" name="review" value="${r}" id="r${i}"> <label for="r${i}">${r}</label></p>`;
+        });
+      }
+    });
+
+    function copyReview() {
+      const selectedReview = document.querySelector('input[name="review"]:checked');
+      if (selectedReview) {
+        navigator.clipboard.writeText(selectedReview.value).then(() => {
+          alert('Review copied to clipboard!');
+        });
+      } else {
+        alert('Please select a review to copy.');
+      }
+    }
+  </script>
+</body>
+</html>
