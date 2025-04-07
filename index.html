@@ -1,192 +1,447 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jes Jewellers Review Page</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Jes Jewellers Ltd - Leave a Review
+  </title>
   <style>
-    body {
-      font-family: 'Lato', sans-serif;
-      background: linear-gradient(to bottom right, #fff8e1, #fbeec1);
-      margin: 0;
-      padding: 20px;
-      color: #4b2e2e;
+   .section-group {
+      text-align: center;
+      margin-top: 40px;
     }
-    h1, h2 {
-      font-family: 'Playfair Display', serif;
-      color: #800000;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: #fffdf7;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(128, 0, 0, 0.2);
-    }
-    .product-section {
-      margin-bottom: 30px;
-      border-bottom: 1px solid #d1b684;
-      padding-bottom: 15px;
-    }
-    label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 5px;
-    }
-    .review-option {
-      margin: 8px 0;
-    }
-    .button-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 30px 0 20px 0;
-    }
-    button {
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background-color: #800000;
+    .main-header {
+      display: inline-block;
+      background-color: goldenrod;
       color: white;
+      padding: 10px 20px;
+      font-size: 20px;
       font-weight: bold;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .product-block {
+      background-color: #fff8dc;
+      border: 1px solid #e0cd94;
+      padding: 10px 20px;
+      margin: 10px auto 30px auto;
+      border-radius: 6px;
+      max-width: 700px;
+      text-align: left;
+    }
+    .product-block h3 {
+      background-color: #f5deb3;
+      padding: 8px 15px;
+      border-radius: 6px;
+      font-size: 17px;
+      color: #4b3e2b;
+      margin-bottom: 10px;
+    }
+    .review-line {
+      background: #fff;
+      margin: 6px auto;
+      padding: 8px 12px;
+      border-radius: 5px;
+      max-width: 640px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff6e5;
+      color: #4b3e2b;
+      padding: 20px;
+    }
+    h1 {
+      color: goldenrod;
+      text-align: center;
+    }
+    .subheadline {
+      font-size: 22px;
+      color: goldenrod;
+      text-align: center;
+      font-weight: bold;
+    }
+    .instruction {
+      font-size: 15px;
+      text-align: center;
+      margin: 10px auto 30px auto;
+      color: #4b3e2b;
+      max-width: 800px;
+    }
+    .section-title {
+      font-weight: bold;
+      font-size: 20px;
+      margin: 30px 0 10px;
+      color: goldenrod;
+    }
+    .product-block {
+      background-color: #fff3cc;
+      border: 1px solid #e0cd94;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    .product-block h3 {
+      margin: 0 0 10px 0;
+      font-size: 18px;
+      color: #4b3e2b;
+    }
+    .review-line {
+      margin: 6px 0;
+    }
+    .review-line input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    .actions {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .copy-btn {
+      padding: 12px 24px;
+      background-color: goldenrod;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+    .google-btn {
+      padding: 14px 30px;
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 18px;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #a52a2a;
-    }
-    .qr-section, .whatsapp-section {
-      text-align: center;
-      margin-top: 30px;
-    }
-    .qr-section img {
-      width: 150px;
-    }
-    .whatsapp-button {
-      background-color: #25D366;
-      color: white;
-    }
   </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Jes Jewellers - WhatsApp Review Page</h1>
-    <p>Select the reviews you'd like to share about your purchase experience:</p>
-
-    <div id="review-sections">
-      <!-- Product review sections will be injected here -->
-    </div>
-
-    <div class="button-group">
-      <button onclick="copySelected()">Copy Selected Reviews</button>
-      <button onclick="window.open('https://g.page/r/Cd1xxxxxGoogleReviewLink', '_blank')">Leave a Google Review</button>
-    </div>
-
-    <div class="whatsapp-section">
-      <button class="whatsapp-button" onclick="shareWhatsApp()">Share on WhatsApp</button>
-    </div>
-
-    <div class="qr-section">
-      <h2>Scan to Review</h2>
-      <img src="logo-qr.png" alt="Jes Jewellers QR Code with Logo" />
-    </div>
+ </head>
+ <body>
+  <h1>
+   Jes Jewellers Ltd - Leave a Review
+  </h1>
+  <div class="subheadline">
+   📣 Leave a Google Review
   </div>
-
+  <div class="instruction">
+   Help others discover us! Click the button below to leave a public review on Google.
+   <br/>
+   Select the reviews you like below, then click "Copy Selected Reviews" and paste them into Google or WhatsApp.
+  </div>
+  <div class="section-group">
+   <div class="main-header">
+    Product Type Purchased
+   </div>
+  </div>
+  <div class="product-block">
+   <h3>
+    ▾ Men's Ring
+   </h3>
+   <div class="review-line">
+    <input type="checkbox" value="Bought a men's ring that's sleek and timeless — great recommendation!"/>
+    Bought a men's ring that's sleek and timeless — great recommendation!
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Quality and detailing are top-notch."/>
+    Quality and detailing are top-notch.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Feels premium and classy."/>
+    Feels premium and classy.
+   </div>
+  </div>
+  <div class="product-block">
+   <h3>
+    ▾ Long Mala
+   </h3>
+   <div class="review-line">
+    <input type="checkbox" value="The Long Mala looks so royal — perfect for weddings!"/>
+    The Long Mala looks so royal — perfect for weddings!
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Amazing craftsmanship, received lots of compliments."/>
+    Amazing craftsmanship, received lots of compliments.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Worth every penny — beautiful and bold."/>
+    Worth every penny — beautiful and bold.
+   </div>
+  </div>
+  <div class="product-block">
+   <h3>
+    ▾ Patta Set
+   </h3>
+   <div class="review-line">
+    <input type="checkbox" value="So intricate and elegant — perfect for traditional functions."/>
+    So intricate and elegant — perfect for traditional functions.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Staff helped me pick the ideal Patta set."/>
+    Staff helped me pick the ideal Patta set.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Love the detailing and shine."/>
+    Love the detailing and shine.
+   </div>
+  </div>
+  <div class="product-block">
+   <h3>
+    ▾ Cain
+   </h3>
+   <div class="review-line">
+    <input type="checkbox" value="Great everyday wear chain with a strong build."/>
+    Great everyday wear chain with a strong build.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Lightweight and elegant."/>
+    Lightweight and elegant.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Easy to match with pendants."/>
+    Easy to match with pendants.
+   </div>
+  </div>
+  <div class="product-block">
+   <h3>
+    ▾ Earrings
+   </h3>
+   <div class="review-line">
+    <input type="checkbox" value="These earrings are sparkling and featherlight — amazing comfort!"/>
+    These earrings are sparkling and featherlight — amazing comfort!
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Helped me pick the perfect design for my style."/>
+    Helped me pick the perfect design for my style.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Affordable and elegant!"/>
+    Affordable and elegant!
+   </div>
+  </div>
+  <div class="product-block">
+   <h3>
+    ▾ Bangles
+   </h3>
+   <div class="review-line">
+    <input type="checkbox" value="Beautifully crafted — matches my sarees so well."/>
+    Beautifully crafted — matches my sarees so well.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Good fit and eye-catching design."/>
+    Good fit and eye-catching design.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Everyone loved these bangles at the function."/>
+    Everyone loved these bangles at the function.
+   </div>
+  </div>
+  <div class="product-block">
+   <h3>
+    ▾ Women's Ring
+   </h3>
+   <div class="review-line">
+    <input type="checkbox" value="I recently purchased a stunning woman's ring... Highly recommended for affordable elegance and impeccable support!"/>
+    I recently purchased a stunning woman's ring... Highly recommended for affordable elegance and impeccable support!
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Buying my ring from your jewellery store was truly delightful... The excellent customer service made the entire process seamless."/>
+    Buying my ring from your jewellery store was truly delightful... The excellent customer service made the entire process seamless.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Absolutely impressed with the affordability and craftsmanship... Their insight ensured I selected something gorgeous yet budget-friendly."/>
+    Absolutely impressed with the affordability and craftsmanship... Their insight ensured I selected something gorgeous yet budget-friendly.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="From the moment I walked in to when I left with my exquisite ring, the customer service was impeccable."/>
+    From the moment I walked in to when I left with my exquisite ring, the customer service was impeccable.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="I purchased an elegant ring... Great prices, remarkable quality, and friendly professionals—highly recommended!"/>
+    I purchased an elegant ring... Great prices, remarkable quality, and friendly professionals—highly recommended!
+   </div>
+  </div>
+  <div class="product-block">
+   <h3>
+    ▾ Bracelet
+   </h3>
+   <div class="review-line">
+    <input type="checkbox" value="The bracelet is a perfect blend of traditional and modern design."/>
+    The bracelet is a perfect blend of traditional and modern design.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Very comfortable to wear daily and still looks elegant."/>
+    Very comfortable to wear daily and still looks elegant.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Affordable and beautifully crafted, exceeded expectations."/>
+    Affordable and beautifully crafted, exceeded expectations.
+   </div>
+  </div>
+  <div class="product-block">
+   <h3>
+    ▾ Nose Pin
+   </h3>
+   <div class="review-line">
+    <input type="checkbox" value="Delicate and detailed, this nose pin stands out effortlessly."/>
+    Delicate and detailed, this nose pin stands out effortlessly.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Loved how lightweight and stylish it is — great choice!"/>
+    Loved how lightweight and stylish it is — great choice!
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Customer service helped me match it perfectly."/>
+    Customer service helped me match it perfectly.
+   </div>
+  </div>
+  <div class="product-block">
+   <h3>
+    ▾ Wedding Set
+   </h3>
+   <div class="review-line">
+    <input type="checkbox" value="The wedding set made me feel like royalty — stunning design and perfect finish."/>
+    The wedding set made me feel like royalty — stunning design and perfect finish.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Beautifully presented and the quality was phenomenal."/>
+    Beautifully presented and the quality was phenomenal.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Jes Jewellers truly delivered a piece that will be treasured forever."/>
+    Jes Jewellers truly delivered a piece that will be treasured forever.
+   </div>
+  </div>
+  <div class="section-group">
+   <div class="main-header">
+    🤝 Customer Service
+   </div>
+  </div>
+  <div class="product-block">
+   <h3>
+    ▾ Customer Service Reviews
+   </h3>
+   <div class="review-line">
+    <input type="checkbox" value="From the moment I walked in, the staff made me feel like family—no pressure, just genuine care and expert guidance throughout my purchase."/>
+    From the moment I walked in, the staff made me feel like family—no pressure, just genuine care and expert guidance throughout my purchase.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="I had a lot of questions and was unsure about what to buy, but the team patiently walked me through everything with a smile—top-tier service!"/>
+    I had a lot of questions and was unsure about what to buy, but the team patiently walked me through everything with a smile—top-tier service!
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Customer service here is next level—fast, attentive, and incredibly warm. They even followed up after my purchase to ensure I was happy."/>
+    Customer service here is next level—fast, attentive, and incredibly warm. They even followed up after my purchase to ensure I was happy.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="I was amazed at how the team went out of their way to accommodate my last-minute custom request—they truly made my special occasion stress-free."/>
+    I was amazed at how the team went out of their way to accommodate my last-minute custom request—they truly made my special occasion stress-free.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="What stood out most was how they listened—every detail I mentioned was remembered, and they made me feel valued every step of the way."/>
+    What stood out most was how they listened—every detail I mentioned was remembered, and they made me feel valued every step of the way.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Quick &amp; Professional — the team was very efficient and courteous."/>
+    Quick &amp; Professional — the team was very efficient and courteous.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Valued as a customer — they truly made me feel special."/>
+    Valued as a customer — they truly made me feel special.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Smooth process from selection to payment."/>
+    Smooth process from selection to payment.
+   </div>
+  </div>
+  <div class="section-group">
+   <div class="main-header">
+    🙌 Staff Experience
+   </div>
+  </div>
+  <div class="product-block">
+   <h3>
+    ▾ Staff Experience Reviews
+   </h3>
+   <div class="review-line">
+    <input type="checkbox" value="The staff treated me with genuine warmth and kindness—it felt more like shopping with friends than salespeople."/>
+    The staff treated me with genuine warmth and kindness—it felt more like shopping with friends than salespeople.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Their product knowledge blew me away—they knew exactly what suited me and explained every detail with clarity."/>
+    Their product knowledge blew me away—they knew exactly what suited me and explained every detail with clarity.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="I never felt rushed or pressured—they took their time and made the experience enjoyable from start to finish."/>
+    I never felt rushed or pressured—they took their time and made the experience enjoyable from start to finish.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="One staff member remembered my preferences from a previous visit—that personal touch meant everything."/>
+    One staff member remembered my preferences from a previous visit—that personal touch meant everything.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="What impressed me most was their honesty and transparency—they helped me find the best option, not the most expensive."/>
+    What impressed me most was their honesty and transparency—they helped me find the best option, not the most expensive.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Friendly &amp; Helpful — guided me patiently through everything."/>
+    Friendly &amp; Helpful — guided me patiently through everything.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Great guidance — helped me find exactly what I was looking for."/>
+    Great guidance — helped me find exactly what I was looking for.
+   </div>
+   <div class="review-line">
+    <input type="checkbox" value="Knowledgeable staff with excellent product insight."/>
+    Knowledgeable staff with excellent product insight.
+   </div>
+  </div>
+  <div class="actions">
+   <button class="copy-btn" onclick="copySelected()">
+    Copy Selected Reviews
+   </button>
+   <br/>
+   <button class="google-btn" onclick="window.open('https://g.page/r/Cd1xxxxxGoogleReviewLink', '_blank')">
+    Leave a Google Review
+   </button>
+   <p style="margin-top: 20px; font-size: 14px; color: #444;">
+    Don’t have a Google account?
+    <span style="font-size: 18px;">
+     😔
+    </span>
+    <br/>
+    No worries — you can still
+    <strong>
+     share your experience with us on WhatsApp
+    </strong>
+    .
+   </p>
+   <button onclick="shareWhatsApp()" style="background-color: #ededed; color: #333; border: none; padding: 10px 20px; border-radius: 6px; font-size: 14px; cursor: pointer;">
+    Share on WhatsApp
+   </button>
+   <br/>
+  </div>
   <script>
-    const reviewData = {
-      "Men’s Ring": [
-        "I loved the premium design and finish of the men's ring.",
-        "Jes Jewellers helped me pick a classy and timeless piece.",
-        "The ring was exactly what I had envisioned – elegant and bold."
-      ],
-      "Bracelet": [
-        "Stunning bracelet with a perfect shine!",
-        "The staff guided me through every step with patience.",
-        "Great craftsmanship at a great price."
-      ],
-      "Long Mala": [
-        "Traditional and eye-catching – loved the detailing.",
-        "My family appreciated this elegant long mala gift.",
-        "Perfect for festive and wedding occasions!"
-      ],
-      "Patta Set": [
-        "Stylish, unique and regal – totally worth it.",
-        "It was a beautiful surprise for my loved one.",
-        "I’m amazed by the intricate design!"
-      ],
-      "Chain": [
-        "Minimal yet premium look – just what I wanted.",
-        "Very durable and feels luxurious.",
-        "They helped me match it with my existing pendant."
-      ],
-      "Nose Pin": [
-        "So delicate, yet so striking – love it!",
-        "Got compliments the first time I wore it.",
-        "Looks amazing with traditional outfits."
-      ],
-      "Earrings": [
-        "The shine and design are simply stunning.",
-        "Perfect size and very lightweight!",
-        "Feels premium and sparkles beautifully."
-      ],
-      "Bangles": [
-        "Blends tradition and style beautifully.",
-        "Comfortable to wear and super classy.",
-        "Love how it matches my saree so well."
-      ],
-      "Wedding Set": [
-        "This set made my wedding day feel magical.",
-        "Elegant, detailed, and absolutely stunning.",
-        "Jes Jewellers really made me feel special."
-      ],
-      "Engagement Ring": [
-        "She said yes – and the ring was a showstopper!",
-        "Jes Jewellers crafted it to perfection.",
-        "Thank you for making our moment unforgettable!"
-      ],
-      "Birthday Gift": [
-        "It was the perfect birthday gift – elegant and thoughtful.",
-        "Delivered on time and beautifully wrapped!",
-        "She absolutely loved the piece – thank you!"
-      ]
-    };
-
-    const container = document.getElementById('review-sections');
-
-    Object.entries(reviewData).forEach(([category, reviews], idx) => {
-      const section = document.createElement('div');
-      section.className = 'product-section';
-      section.innerHTML = `<h2>${category}</h2>`;
-      reviews.forEach((review, i) => {
-        const id = `r-${idx}-${i}`;
-        section.innerHTML += `
-          <div class="review-option">
-            <input type="checkbox" id="${id}" value="${review}">
-            <label for="${id}">${review}</label>
-          </div>`;
-      });
-      container.appendChild(section);
-    });
-
-    function copySelected() {
+   function copySelected() {
       const selected = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
-                            .map(el => el.value)
-                            .join("\n");
+        .map(el => el.value)
+        .join('\n');
       if (selected) {
         navigator.clipboard.writeText(selected).then(() => {
-          alert("Selected reviews copied to clipboard!");
+          alert('Selected reviews copied to clipboard!');
         });
       } else {
-        alert("Please select at least one review to copy.");
+        alert('Please select at least one review to copy.');
       }
     }
-
+  
     function shareWhatsApp() {
       const selected = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
-                            .map(el => el.value)
-                            .join("%0A");
+        .map(el => el.value)
+        .join('%0A');
       if (selected) {
         const whatsappUrl = `https://wa.me/?text=${selected}`;
         window.open(whatsappUrl, '_blank');
@@ -195,5 +450,5 @@
       }
     }
   </script>
-</body>
+ </body>
 </html>
